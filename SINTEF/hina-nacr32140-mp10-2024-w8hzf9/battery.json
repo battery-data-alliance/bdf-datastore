@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "manufacturer": "hina",
+    "model": "nacr32140-mp10",
+    "batch": "2024",
+    "chemistry": "na-ion",
+    "form_factor": "cylindrical",
+    "nominal_voltage_v": 3.0,
+    "rated_capacity_ah": 10.0,
+    "rated_energy_wh": 30.0,
+    "mass_g": 270.0,
+    "volume_l": 0.121,
+    "pe_materials": ["nfmo"],
+    "ne_materials": ["hard-carbon"]
+  },
+  "ids": ["w8hzf9"]
+}

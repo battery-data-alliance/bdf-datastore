@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "manufacturer": "energizer",
+    "model": "cr2032",
+    "batch": "202602",
+    "chemistry": "primary-lithium",
+    "form_factor": "coin",
+    "nominal_voltage_v": 3.0,
+    "rated_capacity_ah": 0.235,
+    "rated_energy_wh": 0.705,
+    "mass_g": 3.0,
+    "volume_l": 0.001,
+    "pe_materials": ["mno2"],
+    "ne_materials": ["lithium"]
+  },
+  "ids": ["dtjrga"]
+}
