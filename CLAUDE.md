@@ -1,7 +1,7 @@
 # bdf-datastore
 
 ## Project Status
-Data repo with 28 cells (SINTEF: 19, Microsoft: 9); 100% raw→processed parity; SINTEF missing all 19 `battery.json` cell metadata files; CI live (validate + 15 pytest tests on every PR).
+Data repo with 28 cells (SINTEF: 19, Microsoft: 9); 100% raw→processed parity; all 19 SINTEF `battery.json` files added; CI live (validate + 129 pytest tests on every PR).
 
 ## What This Repo Is
 
