@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "manufacturer": "google",
+    "model": "g20m7",
+    "batch": "202512",
+    "chemistry": "li-ion",
+    "form_factor": "pouch",
+    "nominal_voltage_v": 3.9,
+    "rated_capacity_ah": 4.835,
+    "rated_energy_wh": 18.86,
+    "mass_g": 55.0,
+    "volume_l": 0.024,
+    "pe_materials": ["nmc"],
+    "ne_materials": ["graphite", "silicon"]
+  },
+  "ids": ["cc6w49"]
+}

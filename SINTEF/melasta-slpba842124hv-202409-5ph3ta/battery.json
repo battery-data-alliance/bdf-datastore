@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "manufacturer": "melasta",
+    "model": "slpba842124hv",
+    "batch": "202409",
+    "chemistry": "li-ion",
+    "form_factor": "pouch",
+    "nominal_voltage_v": 3.85,
+    "rated_capacity_ah": 0.5,
+    "rated_energy_wh": 1.93,
+    "mass_g": 8.0,
+    "volume_l": 0.00423,
+    "pe_materials": ["nmc"],
+    "ne_materials": ["graphite"]
+  },
+  "ids": ["5ph3ta"]
+}
