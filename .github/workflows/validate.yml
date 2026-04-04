@@ -1,0 +1,43 @@
+name: Validate Structure
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false  # skip LFS download; validation only checks metadata + file presence
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Run unit tests
+        run: python -m pytest scripts/tests/ -v
+
+      - name: Run structure validation
+        run: python scripts/validate_structure.py .
+
+      - name: Run quality validation
+        run: python scripts/validate_quality.py .
+
+      - name: Collect metrics and check alert thresholds
+        run: python scripts/collect_metrics.py . --json-output metrics.json
+        # Exits non-zero if any alert threshold is violated, failing the job.
+        # Also writes a Markdown job summary via $GITHUB_STEP_SUMMARY.
+
+      - name: Upload metrics artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-metrics
+          path: metrics.json
+          retention-days: 90

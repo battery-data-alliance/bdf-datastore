@@ -145,7 +145,7 @@ def main() -> int:
     parser.add_argument("files", nargs="+", help="CCS files to convert")
     parser.add_argument(
         "--dev-src",
-        default=r"C:\Users\simonc\Documents\Github-local\battery_data_alliance\battery-data-format\src",
+        required=True,
         help="Path to the local battery-data-format src directory",
     )
     args = parser.parse_args()
