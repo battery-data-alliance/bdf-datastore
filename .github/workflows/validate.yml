@@ -8,6 +8,9 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -52,3 +55,34 @@ jobs:
             metrics.json
             dashboard.html
           retention-days: 90
+
+      - name: Comment on PR with failure details
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let metrics = {};
+            try { metrics = JSON.parse(fs.readFileSync('metrics.json', 'utf8')); } catch {}
+
+            const score = metrics.consistency_score != null
+              ? `${(metrics.consistency_score * 100).toFixed(1)}%` : 'unknown';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: [
+                '## Validation Failed',
+                '',
+                '| Metric | Value |',
+                '|--------|-------|',
+                `| Cells | ${metrics.cell_counts?.total ?? 'unknown'} |`,
+                `| Consistency score | ${score} |`,
+                `| Structure errors | ${metrics.structure_errors ?? 'unknown'} |`,
+                `| Quality errors | ${metrics.quality_errors ?? 'unknown'} |`,
+                '',
+                `See the [workflow run](${runUrl}) for full details and downloadable dashboard.`,
+              ].join('\n'),
+            });
