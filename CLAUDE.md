@@ -1,7 +1,7 @@
 # bdf-datastore
 
 ## Project Status
-Data repo with 28 cells (SINTEF: 19, Microsoft: 9); 100% raw→processed parity; all 19 SINTEF `battery.json` files added; CI live with metrics collection + alert enforcement (240 pytest tests, exits non-zero on any error or consistency score < 100%).
+Data repo with 28 cells (SINTEF: 19, Microsoft: 9); 100% raw→processed parity; all 19 SINTEF `battery.json` files added; CI live with health check + HTML dashboard generation (278 pytest tests); Node.js 24 opted in to silence deprecation warnings.
 
 ## What This Repo Is
 
@@ -46,5 +46,9 @@ python scripts/convert_raw_to_bdf.py [repo-root]
 ## CI
 
 GitHub Actions (`.github/workflows/validate.yml`) runs on every PR and push to main:
-1. **pytest** — 15 unit tests for `validate_structure.py` (`scripts/tests/`)
-2. **Structure validation** — `scripts/validate_structure.py .` checks all cells have `battery.json`, raw/processed counts match
+1. **pytest** — 278 unit tests across all scripts
+2. **Structure validation** — `scripts/validate_structure.py .`
+3. **Quality validation** — `scripts/validate_quality.py .`
+4. **Metrics + alerts** — `scripts/collect_metrics.py .` (exits non-zero on threshold violations; writes job summary)
+5. **Health check** — `scripts/health_check.py .` (structured healthy/degraded/critical status)
+6. **Dashboard** — `scripts/generate_dashboard.py` renders `dashboard.html` (uploaded as artifact)

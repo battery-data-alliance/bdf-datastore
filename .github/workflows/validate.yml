@@ -8,6 +8,8 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,10 +36,19 @@ jobs:
         # Exits non-zero if any alert threshold is violated, failing the job.
         # Also writes a Markdown job summary via $GITHUB_STEP_SUMMARY.
 
+      - name: Run health check
+        run: python scripts/health_check.py . --json
+
+      - name: Generate dashboard
+        if: always()
+        run: python scripts/generate_dashboard.py metrics.json --output dashboard.html
+
       - name: Upload metrics artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: validation-metrics
-          path: metrics.json
+          path: |
+            metrics.json
+            dashboard.html
           retention-days: 90
