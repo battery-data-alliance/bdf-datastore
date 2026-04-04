@@ -25,3 +25,6 @@ jobs:
 
       - name: Run structure validation
         run: python scripts/validate_structure.py .
+
+      - name: Run quality validation
+        run: python scripts/validate_quality.py .
