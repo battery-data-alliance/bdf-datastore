@@ -28,3 +28,16 @@ jobs:
 
       - name: Run quality validation
         run: python scripts/validate_quality.py .
+
+      - name: Collect metrics and check alert thresholds
+        run: python scripts/collect_metrics.py . --json-output metrics.json
+        # Exits non-zero if any alert threshold is violated, failing the job.
+        # Also writes a Markdown job summary via $GITHUB_STEP_SUMMARY.
+
+      - name: Upload metrics artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-metrics
+          path: metrics.json
+          retention-days: 90
