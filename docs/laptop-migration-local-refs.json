@@ -1,0 +1,31 @@
+{
+  "project": "battery-data-alliance/bdf-datastore",
+  "date": "2026-10-03",
+  "refs": [
+    {
+      "source_ref": "refs/heads/agent/d-mnf0upwm",
+      "source_sha": "dc3ffe53f7f72469f836a1d6298adcff0c50647d",
+      "target": "refs/heads/backup/laptop-migration-2026-10-03-history/dc3ffe53f7f72469",
+      "commit": "8b8fe4e4e5038dbb3c731d79367c8a5620acaa3d"
+    },
+    {
+      "source_ref": "refs/heads/agent/d-mnfyyq52",
+      "source_sha": "a3f416c8afeb5a6e2ccc3626214b88751755a2fd",
+      "target": "refs/heads/backup/laptop-migration-2026-10-03-history/a3f416c8afeb5a6e",
+      "commit": "5cbc4cbe8af2d7d8a7369ddf528c8a2a871be943"
+    },
+    {
+      "source_ref": "refs/heads/agent/d-mnjqxbj4",
+      "source_sha": "c3defd0456552caa2a88df511c93a2a64ab2fea7",
+      "target": "refs/heads/backup/laptop-migration-2026-10-03-history/c3defd0456552caa",
+      "commit": "9dffed0c093713405094bdf54368f78fc6b1d72e"
+    },
+    {
+      "source_ref": "refs/heads/agent/d-mnkbqswq",
+      "source_sha": "ac992339f0665a3c219b35f64890820273fe882a",
+      "target": "refs/heads/backup/laptop-migration-2026-10-03-history/ac992339f0665a3c",
+      "commit": "46ddd8361b2c43d8da356e74c345ff663e7c207f"
+    }
+  ],
+  "restore": "Fetch the backup history branches. Original branch/stash commit SHAs remain reachable as their parents. Restore branches with git branch NAME SHA; restore stashes with git stash store SHA."
+}
