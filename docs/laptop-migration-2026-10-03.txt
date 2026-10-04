@@ -1,0 +1,5 @@
+Migration backup checkpoint, October 3, 2026.
+Captured current project files and HEAD history for laptop migration.
+This is a backup snapshot, not a reviewed release or design approval.
+Local credentials, caches and ignored files are excluded and require separate coverage.
+Source checkout and staged work were preserved.
